@@ -6,22 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="FunkyPants">
-    <title>Archives: 2018 - FunkyPants</title>
+    <title>CTF scripts - FunkyPants</title>
     <meta name="author" content="FunkyPants">
     
     
     
-    <script type="application/ld+json">{}</script>
-    <meta name="description" content="CTF">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"FunkyPants","sameAs":["https://github.com/FunkyPantss"],"image":"IMG_0601.JPG"},"articleBody":"\n长串字符串两两分割123def long_to_2(str_):  for i in range(0,len(str_)+1,2):      print(str_[i:i+2])\n效果：\n字符串分割后，常转换为十六进制输出。\n trick：不换行输出 \n\nPython2 print ‘xxx’,\nPython3 print(‘xxx’, end=’’)\n\n不同进制转换一般来说，先换算为十进制，再进行后续转换\n转为十进制\n十六进制到十进制 int(‘0xab’, 16)\n二进制到十进制 int(‘0b10’, 2)\n\n十进制转二进制\nbin(123)十进制转十六进制\nhex(123)\n\n按行读文件的4种方式使用for循环（最简洁）1234file = open(\"sample.txt\")for line in file:    pass # do something\n带缓存的文件读取（效率最高）12345678file = open(\"sample.txt\")while 1:    lines = file.readlines(100000)    if not lines:        break    for line in lines:        pass # do something\nfileinput模块1234import fileinputfor line in fileinput.input(\"sample.txt\"):    pass\n常规方法1234567file = open(\"sample.txt\")while 1:    line = file.readline()    if not line:        break    pass # do something\n其中，后两种方法都不推荐。\n沙盒绕过参考文章 https://blog.0kami.cn/2016/09/16/old-python-sandbox-escape/\n另外补充：当getattr()方法被禁后，可以使用getattribute属性。\n遍历目录下所有文件的内容12345678import osrootdir = os.getcwd()#可自定义for parent, dirnames, filenames in os.walk(rootdir):  for file in filenames:    with open(parent +'\\\\' + file, 'r') as f:      text = f.read() #print(text[0:5])      if text[0:11111] == '待比较字符串'        print(text)\n","dateCreated":"2018-05-05T17:12:57+08:00","dateModified":"2018-05-06T20:20:33+08:00","datePublished":"2018-05-05T17:12:57+08:00","description":"","headline":"CTF scripts","image":["resize.jpg","resize.jpg"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2018/05/05/CTF-scripts/"},"publisher":{"@type":"Organization","name":"FunkyPants","sameAs":["https://github.com/FunkyPantss"],"image":"IMG_0601.JPG","logo":{"@type":"ImageObject","url":"IMG_0601.JPG"}},"url":"http://yoursite.com/2018/05/05/CTF-scripts/","keywords":"CTF, Python","thumbnailUrl":"resize.jpg"}</script>
+    <meta name="description" content="长串字符串两两分割123def long_to_2(str_):  for i in range(0,len(str_)+1,2):      print(str_[i:i+2]) 效果： 字符串分割后，常转换为十六进制输出。  trick：不换行输出   Python2 print ‘xxx’, Python3 print(‘xxx’, end=’’)  不同进制转换一般来说，先换算为十进制，">
+<meta name="keywords" content="CTF,Python">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="FunkyPants">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta property="og:title" content="CTF scripts">
+<meta property="og:url" content="http://yoursite.com/2018/05/05/CTF-scripts/index.html">
 <meta property="og:site_name" content="FunkyPants">
-<meta property="og:description" content="CTF">
+<meta property="og:description" content="长串字符串两两分割123def long_to_2(str_):  for i in range(0,len(str_)+1,2):      print(str_[i:i+2]) 效果： 字符串分割后，常转换为十六进制输出。  trick：不换行输出   Python2 print ‘xxx’, Python3 print(‘xxx’, end=’’)  不同进制转换一般来说，先换算为十进制，">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2018/05/05/CTF-scripts/1.png">
+<meta property="og:updated_time" content="2018-05-06T12:20:33.721Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FunkyPants">
-<meta name="twitter:description" content="CTF">
+<meta name="twitter:title" content="CTF scripts">
+<meta name="twitter:description" content="长串字符串两两分割123def long_to_2(str_):  for i in range(0,len(str_)+1,2):      print(str_[i:i+2]) 效果： 字符串分割后，常转换为十六进制输出。  trick：不换行输出   Python2 print ‘xxx’, Python3 print(‘xxx’, end=’’)  不同进制转换一般来说，先换算为十进制，">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/05/CTF-scripts/1.png">
     
     
         
@@ -30,6 +34,12 @@
         <meta property="og:image" content="http://yoursite.com/assets/images/IMG_0601.JPG"/>
     
     
+        <meta property="og:image" content="http://yoursite.com/2018/05/05/CTF-scripts/resize.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://yoursite.com/2018/05/05/CTF-scripts/resize.jpg" />
+    
+    
+        <meta property="og:image" content="http://yoursite.com/2018/05/05/CTF-scripts/resize.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://yoursite.com/2018/05/05/CTF-scripts/resize.jpg" />
     
     
     <!--STYLES-->
@@ -216,26 +226,20 @@
 </nav>
 
             
-            <div id="main" data-behavior="2"
-                 class="
-                        hasCoverMetaIn
-                        ">
-                
-    <section class="postShorten-group main-content-wrap">
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
+        <div class="post-header-cover
+                    text-center
+                    post-header-cover--partial"
+             style="background-image:url('/2018/05/05/CTF-scripts/resize.jpg');"
+             data-behavior="2">
             
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2018/05/05/CTF-scripts/">
-                            CTF scripts
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+                <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title">
+            CTF scripts
+        </h1>
+    
+    
+        <div class="post-meta">
     <time datetime="2018-05-05T17:12:57+08:00">
 	
 		    May 05, 2018
@@ -244,10 +248,23 @@
     
 </div>
 
-            </div>
+    
+</div>
+
             
-                <div class="postShorten-content">
-                    <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#长串字符串两两分割"><span class="toc-text">长串字符串两两分割</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同进制转换"><span class="toc-text">不同进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#转为十进制"><span class="toc-text">转为十进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制转二进制"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制转十六进制"><span class="toc-text">十进制转十六进制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#按行读文件的4种方式"><span class="toc-text">按行读文件的4种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用for循环（最简洁）"><span class="toc-text">使用for循环（最简洁）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带缓存的文件读取（效率最高）"><span class="toc-text">带缓存的文件读取（效率最高）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fileinput模块"><span class="toc-text">fileinput模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规方法"><span class="toc-text">常规方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#沙盒绕过"><span class="toc-text">沙盒绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#遍历目录下所有文件的内容"><span class="toc-text">遍历目录下所有文件的内容</span></a></li></ol>
+        </div>
+
+            <div id="main" data-behavior="2"
+                 class="hasCover
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="table-of-contents">Table of Contents</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#长串字符串两两分割"><span class="toc-text">长串字符串两两分割</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同进制转换"><span class="toc-text">不同进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#转为十进制"><span class="toc-text">转为十进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制转二进制"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制转十六进制"><span class="toc-text">十进制转十六进制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#按行读文件的4种方式"><span class="toc-text">按行读文件的4种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用for循环（最简洁）"><span class="toc-text">使用for循环（最简洁）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带缓存的文件读取（效率最高）"><span class="toc-text">带缓存的文件读取（效率最高）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fileinput模块"><span class="toc-text">fileinput模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规方法"><span class="toc-text">常规方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#沙盒绕过"><span class="toc-text">沙盒绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#遍历目录下所有文件的内容"><span class="toc-text">遍历目录下所有文件的内容</span></a></li></ol>
 <h1 id="长串字符串两两分割"><a href="#长串字符串两两分割" class="headerlink" title="长串字符串两两分割"></a>长串字符串两两分割</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">long_to_2</span><span class="params">(str_)</span>:</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(str_)+<span class="number">1</span>,<span class="number">2</span>):</span><br><span class="line">      print(str_[i:i+<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
 <p>效果：<br><img src="1.png" alt="1"></p>
 <p>字符串分割后，常转换为十六进制输出。</p>
@@ -274,39 +291,92 @@
 <p>另外补充：当getattr()方法被禁后，可以使用<strong>getattribute</strong>属性。</p>
 <h1 id="遍历目录下所有文件的内容"><a href="#遍历目录下所有文件的内容" class="headerlink" title="遍历目录下所有文件的内容"></a>遍历目录下所有文件的内容</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">rootdir = os.getcwd()<span class="comment">#可自定义</span></span><br><span class="line"><span class="keyword">for</span> parent, dirnames, filenames <span class="keyword">in</span> os.walk(rootdir):</span><br><span class="line">  <span class="keyword">for</span> file <span class="keyword">in</span> filenames:</span><br><span class="line">    <span class="keyword">with</span> open(parent +<span class="string">'\\'</span> + file, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">      text = f.read() <span class="comment">#print(text[0:5])</span></span><br><span class="line">      <span class="keyword">if</span> text[<span class="number">0</span>:<span class="number">11111</span>] == <span class="string">'待比较字符串'</span></span><br><span class="line">        print(text)</span><br></pre></td></tr></table></figure>
 
-                    
-                        
+            
 
-                    
-                    
-                        <p>
-                            <a href="/2018/05/05/CTF-scripts/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-            <a href="/2018/05/05/CTF-scripts/">
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="http://yoursite.com/2018/05/05/CTF-scripts/resize.jpg"/>
-                </div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/CTF/">CTF</a> <a class="tag tag--primary tag--small t-link" href="/tags/Python/">Python</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://yoursite.com/2018/05/05/CTF-scripts/" title="Share on Weibo">
+                    <i class="fa fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/05/CTF-scripts/&amp;title=CTF scripts" title="Share on QQ">
+                    <i class="fa fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2018/05/05/CTF-scripts/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
             
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        
-        <li class="pagination-number">page 1 of 1</li>
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
@@ -317,6 +387,106 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://yoursite.com/2018/05/05/CTF-scripts/" title="Share on Weibo">
+                    <i class="fa fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/05/CTF-scripts/&amp;title=CTF scripts" title="Share on QQ">
+                    <i class="fa fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2018/05/05/CTF-scripts/" title="Share on Qzone">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#table-of-contents" aria-label="Table of Contents">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://yoursite.com/2018/05/05/CTF-scripts/">
+                    <i class="fa fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/05/CTF-scripts/&amp;title=CTF scripts">
+                    <i class="fa fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2018/05/05/CTF-scripts/">
+                    <i class="fa fa-star" aria-hidden="true"></i><span>Share on Qzone</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
             
         </div>
         
@@ -363,6 +533,8 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-yhuo2grt8r7qkqumzgjoglkfbicl1thukjgmla6jopu56zpcowfedi5zjcor.min.js"></script>
 <!--SCRIPTS END-->
+
+    
 
 
 
